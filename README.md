@@ -33,5 +33,7 @@ Una biblioteca simple en C++ utilizando OpenCV para realizar operaciones aritmé
 Para compilar el proyecto (ejemplo básico con g++):
 
 ```bash
-g++ -Iinclude src/*.cpp -o image-calculator `pkg-config --cflags --libs opencv4 sdl2`
+cmake -B build
+cmake --build build
+./build/app
 ```
