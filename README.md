@@ -1,39 +1,53 @@
-# Image Calculator
+# Image Calculator - Procesamiento Manual de Imágenes
 
-Una biblioteca simple en C++ utilizando OpenCV para realizar operaciones aritméticas y lógicas básicas sobre imágenes.
+Una aplicación interactiva en C++ que implementa operaciones aritméticas y lógicas sobre imágenes de forma manual (sin usar funciones matemáticas de OpenCV), utilizando Qt6 para la interfaz de usuario.
+
+## Características Principales
+
+- **Procesamiento Manual**: Todas las operaciones están implementadas con bucles `for` anidados y acceso directo a píxeles, evitando las abstracciones matemáticas de alto nivel de OpenCV para fines educativos y de control total.
+- **Interfaz Gráfica**: Construida con Qt6, permitiendo cargar imágenes A y B de forma independiente y seleccionar operaciones desde un menú.
+- **Operaciones por Canales**: Soporte para imágenes en color (BGR) procesando cada canal individualmente.
 
 ## Estructura del Proyecto
 
-- `include/`: Archivos de cabecera (.hpp).
-  - `aritmethic-operations.hpp`: Declaraciones para resta de imágenes.
-  - `logic-operations.hpp`: Declaraciones para operación AND y negativo de imagen.
-- `src/`: Implementaciones de la biblioteca (.cpp).
-  - `aritmethic-operations.cpp`: Implementación de la resta por canales.
-  - `logic-operations.cpp`: Implementación de operaciones lógicas.
-  - `main.cpp`: Punto de entrada principal (actualmente configurado con SDL2).
-- `images/`: Imágenes de ejemplo para pruebas.
+- `include/`: Definiciones de las funciones de procesamiento.
+- `src/`: Lógica de la aplicación e implementación manual de algoritmos.
+- `images/`: Recursos de prueba.
 
 ## Requisitos
 
-- OpenCV 4.x
-- SDL2 (para la visualización en `main.cpp`)
-- Compilador compatible con C++11 o superior
+- **OpenCV 4.x**: Utilizado únicamente para carga (`imread`), guardado (`imwrite`) y visualización (`imshow`) de imágenes.
+- **Qt6**: Para la interfaz gráfica de usuario.
+- **CMake 3.10+**
+- **Compilador C++17**
 
-## Operaciones Disponibles
+## Operaciones Implementadas
 
-### Aritméticas
-- **Substraction**: Resta los valores de los píxeles de dos imágenes canal por canal.
+### Aritméticas (Manuales)
+- **Suma**: Adición de píxeles con truncamiento (clamping) a 255.
+- **Resta**: Sustracción de píxeles con límite inferior en 0.
+- **Multiplicación**: Basada en normalización (escala de 0 a 1).
+- **División**: Escalado de valores basado en la relación entre píxeles.
 
-### Lógicas
-- **AND**: Realiza un bitwise AND entre dos imágenes.
-- **Negative**: Calcula el negativo de una imagen (invirtiendo los valores de los píxeles respecto a MAX_PIX).
+### Lógicas y Procesamiento (Manuales)
+- **AND / OR / XOR**: Operaciones bit a bit entre imágenes.
+- **Negativo**: Inversión completa de colores.
+- **Escala de Grises**: Conversión ponderada (Luma).
+- **Umbralización (Threshold)**: Segmentación binaria.
+- **Brillo y Contraste**: Ajustes lineales manuales.
 
-## Uso
-
-Para compilar el proyecto (ejemplo básico con g++):
+## Compilación y Ejecución
 
 ```bash
-cmake -B build
-cmake --build build
-./build/app
+mkdir build && cd build
+cmake ..
+make
+./app
 ```
+
+## Uso de la App
+
+1. Cargar la **Imagen A** (obligatoria).
+2. Cargar la **Imagen B** (requerida para operaciones binarias como suma o AND).
+3. Seleccionar la operación en el menú desplegable.
+4. Presionar "Calculate & Show" para ver el resultado.
