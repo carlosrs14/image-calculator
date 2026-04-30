@@ -6,4 +6,5 @@
 #endif
 
 cv::Mat and_op(const cv::Mat& x1, const cv::Mat& x2);
+cv::Mat or_op(const cv::Mat& x1, const cv::Mat& x2);
 cv::Mat negative(const cv::Mat& x);
