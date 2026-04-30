@@ -38,15 +38,16 @@ int main(int argc, char** argv) {
     opCombo->addItem("Division");
     opCombo->addItem("AND");
     opCombo->addItem("OR");
-    opCombo->addItem("XOR");
+    // not implemented yet
+    // opCombo->addItem("XOR");
     opCombo->addItem("Negative (Image A)");
-    opCombo->addItem("Grayscale (Image A)");
-    opCombo->addItem("Threshold (Image A)");
-    opCombo->addItem("Brightness +50 (Image A)");
-    opCombo->addItem("Contrast x1.5 (Image A)");
-    opCombo->addItem("Flip Horizontal (Image A)");
-    opCombo->addItem("Flip Vertical (Image A)");
-    opCombo->addItem("Box Blur 3x3 (Image A)");
+    // opCombo->addItem("Grayscale (Image A)");
+    // opCombo->addItem("Threshold (Image A)");
+    // opCombo->addItem("Brightness +50 (Image A)");
+    // opCombo->addItem("Contrast x1.5 (Image A)");
+    // opCombo->addItem("Flip Horizontal (Image A)");
+    // opCombo->addItem("Flip Vertical (Image A)");
+    // opCombo->addItem("Box Blur 3x3 (Image A)");
 
     QPushButton *btnRun = new QPushButton("Calculate & Show");
     
