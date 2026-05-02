@@ -11,8 +11,10 @@ cv::Mat addition(const cv::Mat& m1, const cv::Mat& m2) {
     for (int i = 0; i < m1.rows; i++) {
         for (int j = 0; j < m1.cols; j++) {
             for (int c = 0; c < channels; c++) {
-                int val = (int)m1.ptr<uchar>(i)[j * channels + c] + (int)m2.ptr<uchar>(i)[j * channels + c];
-                out.ptr<uchar>(i)[j * channels + c] = (uchar)(val > MAX_PIX ? MAX_PIX : val);
+                float val1 = (float) ((int) m1.ptr<uchar>(i)[j * channels + c] * 0.8f);
+                float val2 = (float) ((int) m2.ptr<uchar>(i)[j * channels + c] * 0.2f);
+                int val = (int) (val1 + val2);
+                out.ptr<uchar>(i)[j * channels + c] = (uchar)(val);
             }
         }
     }
