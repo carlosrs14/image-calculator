@@ -129,3 +129,7 @@ cv::Mat sqrt(const cv::Mat &m, const double value) {
     
     return out;
 }
+
+cv::Mat water_mark(const cv::Mat &m1, const cv::Mat &m2, double value) {
+    return cv::Mat();
+}

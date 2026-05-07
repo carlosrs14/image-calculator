@@ -11,3 +11,4 @@ cv::Mat multiplication(const cv::Mat& m1, const cv::Mat& m2);
 cv::Mat division(const cv::Mat& m1, const cv::Mat& m2);
 cv::Mat escalar(const cv::Mat& m, const double value);
 cv::Mat sqrt(const cv::Mat& m, const double value);
+cv::Mat water_mark(const cv::Mat&m1, const cv::Mat&m2, double value);

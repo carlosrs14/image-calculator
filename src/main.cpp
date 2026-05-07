@@ -13,7 +13,7 @@
 
 #include "aritmethic-operations.hpp"
 #include "logic-operations.hpp"
-#include "transformations.hpp"
+#include "geometric-operations.hpp"
 
 #define WIDTH 600
 #define HEIGHT 500

@@ -27,14 +27,11 @@ Una aplicación interactiva en C++ que implementa operaciones aritméticas y ló
 - **Suma**: Adición de píxeles con truncamiento (clamping) a 255.
 - **Resta**: Sustracción de píxeles con límite inferior en 0.
 - **Multiplicación**: Basada en normalización (escala de 0 a 1).
-- **División**: Escalado de valores basado en la relación entre píxeles.
 
 ### Lógicas y Procesamiento (Manuales)
 - **AND / OR / XOR**: Operaciones bit a bit entre imágenes.
 - **Negativo**: Inversión completa de colores.
 - **Escala de Grises**: Conversión ponderada (Luma).
-- **Umbralización (Threshold)**: Segmentación binaria.
-- **Brillo y Contraste**: Ajustes lineales manuales.
 
 ## Compilación y Ejecución
 
