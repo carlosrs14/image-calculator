@@ -85,7 +85,7 @@ cv::Mat division(const cv::Mat& m1, const cv::Mat& m2) {
     return out;
 }
 
-cv::Mat Escalar(const cv::Mat &m, const double value){
+cv::Mat escalar(const cv::Mat &m, const double value){
     if (m.empty()) return cv::Mat();
     if(value<0) return cv::Mat();
 

@@ -42,6 +42,7 @@ int main(int argc, char** argv) {
     opCombo->addItem("Escalar (Image A)");
     opCombo->addItem("AND");
     opCombo->addItem("OR");
+    opCombo->addItem("XOR");
     opCombo->addItem("Negative (Image A)");
     opCombo->addItem("Translate X (Image A)");
     opCombo->addItem("Translate Y (Image A)");
@@ -127,9 +128,10 @@ cv::Mat operate(const cv::Mat &x1, const cv::Mat &x2, const std::string op, doub
     if (op == "Subtraction") return substraction(x1, x2);
     if (op == "Multiplication") return multiplication(x1, x2);
     if (op == "Division") return division(x1, x2);
-    if (op == "Escalar (Image A)") return Escalar(x1,val);
+    if (op == "Escalar (Image A)") return escalar(x1,val);
     if (op == "AND") return and_op(x1, x2);
     if (op == "OR") return or_op(x1, x2);
+    if (op == "XOR") return xor_op(x1, x2);
     if (op == "Negative (Image A)") return negative(x1);
     if (op == "Translate X (Image A)") return translate_x(x1, (int)val);
     if (op == "Translate Y (Image A)") return translate_y(x1, (int)val);
