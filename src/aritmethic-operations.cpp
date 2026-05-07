@@ -84,3 +84,27 @@ cv::Mat division(const cv::Mat& m1, const cv::Mat& m2) {
     }
     return out;
 }
+
+cv::Mat Escalar(const cv::Mat &m, const double value){
+    if (m.empty()) return cv::Mat();
+    if(value<0) return cv::Mat();
+
+    cv::Mat out = m.clone();
+    int channels = m.channels();
+
+    for (int i = 0; i < m.rows; i++) {
+        for (int j = 0; j < m.cols; j++) {
+            for (int c = 0; c < channels; c++) {
+                double val= m.ptr<uchar>(i)[j * channels + c] * value;
+
+                if(val>255) val=255;
+
+                out.ptr<uchar>(i)[j * channels + c]=(uchar) val;
+
+            }
+        }
+    }
+
+    return out;
+}
+

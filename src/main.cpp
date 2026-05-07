@@ -39,6 +39,7 @@ int main(int argc, char** argv) {
     opCombo->addItem("Subtraction");
     opCombo->addItem("Multiplication");
     opCombo->addItem("Division");
+    opCombo->addItem("Escalar (Image A)");
     opCombo->addItem("AND");
     opCombo->addItem("OR");
     opCombo->addItem("Negative (Image A)");
@@ -79,10 +80,15 @@ int main(int argc, char** argv) {
         std::string op = opCombo->currentText().toStdString();
         double val = inputVal->text().toDouble();
         
-        if (op != "Negative (Image A)" && op != "Translate X (Image A)" && op != "Translate Y (Image A)" && op != "Grayscale (Image A)" && op != "Threshold (Image A)" && 
+        if (op != "Negative (Image A)" && op != "Escalar (Image A)" &&op != "Translate X (Image A)" && op != "Translate Y (Image A)" && op != "Grayscale (Image A)" && op != "Threshold (Image A)" && 
             op != "Brightness +50 (Image A)" && op != "Contrast x1.5 (Image A)" &&
             op != "Flip Horizontal (Image A)" && op != "Flip Vertical (Image A)" && op != "Box Blur 3x3 (Image A)" && b.empty()) {
             QMessageBox::warning(&window, "Error", "Image B is required for this operation");
+            return;
+        }
+
+        if(op == "Escalar (Image A)"&& val<0){
+            QMessageBox::warning(&window, "Error", "Negative scaling values are not allowed");
             return;
         }
 
@@ -121,6 +127,7 @@ cv::Mat operate(const cv::Mat &x1, const cv::Mat &x2, const std::string op, doub
     if (op == "Subtraction") return substraction(x1, x2);
     if (op == "Multiplication") return multiplication(x1, x2);
     if (op == "Division") return division(x1, x2);
+    if (op == "Escalar (Image A)") return Escalar(x1,val);
     if (op == "AND") return and_op(x1, x2);
     if (op == "OR") return or_op(x1, x2);
     if (op == "Negative (Image A)") return negative(x1);
