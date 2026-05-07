@@ -61,3 +61,39 @@ cv::Mat translate_y(const cv::Mat &m, const long int y) {
     cv::merge(channels_out, out);
     return out;
 }
+
+cv::Mat rotation(const cv::Mat &m, const long int angulo){
+    if (m.empty()) return cv::Mat();
+
+    int rows = m.rows;
+    int cols = m.cols;
+
+    cv::Mat out = cv::Mat::zeros(rows, cols, m.type());;
+    int channels = m.channels();
+
+    int centroX = cols / 2;
+    int centroY = rows / 2;
+    
+    double rad = angulo * (M_PI / 180.0);
+    double coseno = std::cos(rad);
+    double seno = std::sin(rad);
+
+    for (int i = 0; i < m.rows; i++) {
+        for (int j = 0; j < m.cols; j++) {
+
+            int x = j - centroX;
+            int y = i - centroY;
+
+            int ni = (int)(-x * seno + y * coseno + centroY);
+            int nj = (int)(x * coseno + y * seno + centroX);
+
+            if (ni >= 0 && ni < rows && nj >= 0 && nj < cols) {
+                for (int c = 0; c < channels; c++) {
+                    out.ptr<uchar>(ni)[nj * channels + c]= m.ptr<uchar>(i)[j * channels + c];
+                }
+            }
+        }
+    }
+
+    return out;
+}

@@ -46,6 +46,7 @@ int main(int argc, char** argv) {
     opCombo->addItem("Negative (Image A)");
     opCombo->addItem("Translate X (Image A)");
     opCombo->addItem("Translate Y (Image A)");
+    opCombo->addItem("Rotation (Image A)");
 
     QLabel *lblVal = new QLabel("Numeric Value:");
     QLineEdit *inputVal = new QLineEdit();
@@ -81,7 +82,7 @@ int main(int argc, char** argv) {
         std::string op = opCombo->currentText().toStdString();
         double val = inputVal->text().toDouble();
         
-        if (op != "Negative (Image A)" && op != "Escalar (Image A)" &&op != "Translate X (Image A)" && op != "Translate Y (Image A)" && op != "Grayscale (Image A)" && op != "Threshold (Image A)" && 
+        if (op != "Rotation (Image A)" && op != "Negative (Image A)" && op != "Escalar (Image A)" && op != "Translate X (Image A)" && op != "Translate Y (Image A)" && op != "Grayscale (Image A)" && op != "Threshold (Image A)" && 
             op != "Brightness +50 (Image A)" && op != "Contrast x1.5 (Image A)" &&
             op != "Flip Horizontal (Image A)" && op != "Flip Vertical (Image A)" && op != "Box Blur 3x3 (Image A)" && b.empty()) {
             QMessageBox::warning(&window, "Error", "Image B is required for this operation");
@@ -90,6 +91,11 @@ int main(int argc, char** argv) {
 
         if(op == "Escalar (Image A)"&& val<0){
             QMessageBox::warning(&window, "Error", "Negative scaling values are not allowed");
+            return;
+        }
+
+        if(op == "Rotation (Image A)"&& (val<0 || val >360)){
+            QMessageBox::warning(&window, "Error", "it must be between 0 and 360");
             return;
         }
 
@@ -135,5 +141,7 @@ cv::Mat operate(const cv::Mat &x1, const cv::Mat &x2, const std::string op, doub
     if (op == "Negative (Image A)") return negative(x1);
     if (op == "Translate X (Image A)") return translate_x(x1, (int)val);
     if (op == "Translate Y (Image A)") return translate_y(x1, (int)val);
+    if (op == "Rotation (Image A)") return rotation(x1, (int)val);
+
     return cv::Mat();
 }
