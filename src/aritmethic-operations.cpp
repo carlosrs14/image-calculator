@@ -87,7 +87,7 @@ cv::Mat division(const cv::Mat& m1, const cv::Mat& m2) {
 
 cv::Mat escalar(const cv::Mat &m, const double value){
     if (m.empty()) return cv::Mat();
-    if(value<0) return cv::Mat();
+    if(value < 0) return cv::Mat();
 
     cv::Mat out = m.clone();
     int channels = m.channels();
@@ -95,11 +95,11 @@ cv::Mat escalar(const cv::Mat &m, const double value){
     for (int i = 0; i < m.rows; i++) {
         for (int j = 0; j < m.cols; j++) {
             for (int c = 0; c < channels; c++) {
-                double val= m.ptr<uchar>(i)[j * channels + c] * value;
+                double val = m.ptr<uchar>(i)[j * channels + c] * value;
 
-                if(val>255) val=255;
+                if(val > 255) val = 255;
 
-                out.ptr<uchar>(i)[j * channels + c]=(uchar) val;
+                out.ptr<uchar>(i)[j * channels + c] = (uchar) val;
 
             }
         }
@@ -108,3 +108,24 @@ cv::Mat escalar(const cv::Mat &m, const double value){
     return out;
 }
 
+cv::Mat sqrt(const cv::Mat &m, const double value) {
+    if (m.empty()) return cv::Mat();
+    if (value < 0) return cv::Mat();
+
+    cv::Mat out = m.clone();
+    int channels = m.channels();
+
+    for (int i = 0; i < m.rows; i++) {
+        for (int j = 0; j < m.cols; j++) {
+            for (int c = 0; c < channels; c++) {
+                uchar pix = m.ptr<uchar>(i)[j * channels + c];
+                double val = pow((double) pix, (double) (1 / value));
+                if (val > 255) val = 255;
+                if (val < 0) val = 0;
+                out.ptr<uchar>(i)[j * channels + c] = (uchar) val;
+            }
+        }
+    }
+    
+    return out;
+}
