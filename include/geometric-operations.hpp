@@ -4,3 +4,5 @@
 cv::Mat translate_x(const cv::Mat& m, const long int x);
 cv::Mat translate_y(const cv::Mat& m, const long int y);
 cv::Mat rotation(const cv::Mat& m, const long int angulo);
+cv::Mat mirror_x(const cv::Mat&m, const long int y);
+cv::Mat mirror_y(const cv::Mat&m, const long int x);

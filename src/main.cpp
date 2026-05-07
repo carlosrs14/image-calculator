@@ -49,6 +49,8 @@ int main(int argc, char** argv) {
     opCombo->addItem("Rotation (Image A)");
     opCombo->addItem("Raiz (Image A)");
     opCombo->addItem("Water mark");
+    opCombo->addItem("Espejo X (Image A)");
+    opCombo->addItem("Espejo Y (Image A)");
 
     QLabel *lblVal = new QLabel("Numeric Value:");
     QLineEdit *inputVal = new QLineEdit();
@@ -84,14 +86,7 @@ int main(int argc, char** argv) {
         std::string op = opCombo->currentText().toStdString();
         double val = inputVal->text().toDouble();
         
-        if (op != "Rotation (Image A)" && op != "Negative (Image A)" 
-            && op != "Escalar (Image A)" && op != "Translate X (Image A)" 
-            && op != "Translate Y (Image A)" && op != "Grayscale (Image A)" 
-            && op != "Threshold (Image A)" && op != "Brightness +50 (Image A)" 
-            && op != "Contrast x1.5 (Image A)" && op != "Flip Horizontal (Image A)" 
-            && op != "Flip Vertical (Image A)" && op != "Box Blur 3x3 (Image A)" 
-            && op != "Raiz (Image A)" 
-            && b.empty()) {
+        if (op.find("(Image A)") == std::string::npos && b.empty()) {
             QMessageBox::warning(&window, "Error", "Image B is required for this operation");
             return;
         }

@@ -97,3 +97,11 @@ cv::Mat rotation(const cv::Mat &m, const long int angulo){
 
     return out;
 }
+
+cv::Mat mirror_x(const cv::Mat &m, const long int y) {
+    return cv::Mat();
+}
+
+cv::Mat mirror_y(const cv::Mat &m, const long int x) {
+    return cv::Mat();
+}
