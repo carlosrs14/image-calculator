@@ -48,6 +48,7 @@ int main(int argc, char** argv) {
     opCombo->addItem("Translate Y (Image A)");
     opCombo->addItem("Rotation (Image A)");
     opCombo->addItem("Raiz (Image A)");
+    opCombo->addItem("Water mark");
 
     QLabel *lblVal = new QLabel("Numeric Value:");
     QLineEdit *inputVal = new QLineEdit();
@@ -149,6 +150,7 @@ cv::Mat operate(const cv::Mat &x1, const cv::Mat &x2, const std::string op, doub
     if (op == "Translate Y (Image A)") return translate_y(x1, (int) val);
     if (op == "Rotation (Image A)") return rotation(x1, (int) val);
     if (op == "Raiz (Image A)") return sqrt(x1, (double) val);
+    if (op == "Water mark") return water_mark(x1, x2, val);
 
     return cv::Mat();
 }

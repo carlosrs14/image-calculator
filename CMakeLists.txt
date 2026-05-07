@@ -13,7 +13,7 @@ set(SOURCES
     src/main.cpp
     src/aritmethic-operations.cpp
     src/logic-operations.cpp
-    src/transformations.cpp
+    src/geometric-operations.cpp
 )
 
 add_executable(app ${SOURCES})

@@ -131,5 +131,25 @@ cv::Mat sqrt(const cv::Mat &m, const double value) {
 }
 
 cv::Mat water_mark(const cv::Mat &m1, const cv::Mat &m2, double value) {
-    return cv::Mat();
+    if (m1.empty() || m2.empty() || m1.type() != m2.type()) {
+        return m1.clone();
+    }
+
+    cv::Mat out = m1.clone();
+    int channels = m1.channels();
+
+    int rows = std::min(m1.rows, m2.rows);
+    int cols = std::min(m1.cols, m2.cols);
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            for (int c = 0; c < channels; c++) {
+                float val1 = (float)((int)m1.ptr<uchar>(i)[j * channels + c] * (1.0 - value));
+                float val2 = (float)((int)m2.ptr<uchar>(i)[j * channels + c] * value);
+                int val = (int)(val1 + val2);
+                out.ptr<uchar>(i)[j * channels + c] = (uchar)(val > 255 ? 255 : val);
+            }
+        }
+    }
+    return out;
 }
