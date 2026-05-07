@@ -146,6 +146,7 @@ cv::Mat operate(const cv::Mat &x1, const cv::Mat &x2, const std::string op, doub
     if (op == "Rotation (Image A)") return rotation(x1, (int) val);
     if (op == "Raiz (Image A)") return sqrt(x1, (double) val);
     if (op == "Water mark") return water_mark(x1, x2, val);
-
+    if (op == "Espejo X (Image A)") return mirror_x(x1, (int) val);
+    if (op == "Espejo Y (Image A)") return mirror_y(x1, (int) val);
     return cv::Mat();
 }
