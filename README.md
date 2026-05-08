@@ -1,50 +1,110 @@
-# Image Calculator - Procesamiento Manual de Imágenes
+# Image Calculator
 
-Una aplicación interactiva en C++ que implementa operaciones aritméticas y lógicas sobre imágenes de forma manual (sin usar funciones matemáticas de OpenCV), utilizando Qt6 para la interfaz de usuario.
+Aplicación de procesamiento digital de imágenes desarrollada en C++ para comprender el manejo de píxeles y transformaciones de imágenes desde bajo nivel.  
+Las operaciones se implementan manualmente mediante acceso directo a memoria y recorridos con bucles `for`, evitando el uso de funciones internas de procesamiento de OpenCV.
 
-## Características Principales
+---
 
-- **Procesamiento Manual**: Todas las operaciones están implementadas con bucles `for` anidados y acceso directo a píxeles, evitando las abstracciones matemáticas de alto nivel de OpenCV para fines educativos y de control total.
-- **Interfaz Gráfica**: Construida con Qt6, permitiendo cargar imágenes A y B de forma independiente y seleccionar operaciones desde un menú.
-- **Operaciones por Canales**: Soporte para imágenes en color (BGR) procesando cada canal individualmente.
+# Preview
 
-## Estructura del Proyecto
+## Interfaz
+![Calculator UI](assets/calculator-ui.png)
 
-- `include/`: Definiciones de las funciones de procesamiento.
-- `src/`: Lógica de la aplicación e implementación manual de algoritmos.
-- `images/`: Recursos de prueba.
+## Operaciones implementadas
 
-## Requisitos
+| Operación | Entrada | Resultado |
+|---|---|---|
+| Negativo | ![Input](assets/lyon.jpg) | ![Negative](assets/negative.png) |
+| Watermark | ![Input](assets/lyon.jpg) | ![Watermark](assets/watermark_demo.png) |
+| Rotación | ![Input](assets/lyon.jpg) | ![Rotation](assets/rotation_demo.png) |
+| XOR | ![Input](assets/lyon.jpg) | ![XOR](assets/xor_demo.png) |
 
-- **OpenCV 4.x**: Utilizado únicamente para carga (`imread`), guardado (`imwrite`) y visualización (`imshow`) de imágenes.
-- **Qt6**: Para la interfaz gráfica de usuario.
-- **CMake 3.10+**
-- **Compilador C++17**
+---
 
-## Operaciones Implementadas
+# Características
 
-### Aritméticas (Manuales)
-- **Suma**: Adición de píxeles con truncamiento (clamping) a 255.
-- **Resta**: Sustracción de píxeles con límite inferior en 0.
-- **Multiplicación**: Basada en normalización (escala de 0 a 1).
+- Implementación manual de operaciones sobre imágenes.
+- Procesamiento por canal (BGR y escala de grises).
+- Interfaz gráfica desarrollada con Qt6.
+- Uso de OpenCV únicamente para carga y guardado de imágenes.
+- Transformaciones aritméticas, lógicas y geométricas.
 
-### Lógicas y Procesamiento (Manuales)
-- **AND / OR / XOR**: Operaciones bit a bit entre imágenes.
-- **Negativo**: Inversión completa de colores.
-- **Escala de Grises**: Conversión ponderada (Luma).
+---
 
-## Compilación y Ejecución
+# Tecnologías
+
+- C++17
+- Qt6
+- OpenCV 4.x
+- CMake
+
+---
+
+# Operaciones Disponibles
+
+## Aritméticas
+- Suma
+- Resta
+- Multiplicación
+- División
+- Escalado de brillo
+- Raíz cuadrada
+- Watermark / Alpha Blending
+
+## Lógicas
+- AND
+- OR
+- XOR
+- Negativo
+
+## Geométricas
+- Traslación
+- Rotación
+- Espejo horizontal y vertical
+
+---
+
+# Estructura del Proyecto
+
+```text
+include/   -> Definiciones y cabeceras
+src/       -> Implementación y GUI
+assets/    -> Recursos e imágenes del README
+images/    -> Imágenes de prueba
+```
+
+---
+
+# Requisitos
+
+- OpenCV 4.x
+- Qt6
+- CMake 3.10+
+- Compilador compatible con C++17
+
+---
+
+# Compilación
 
 ```bash
 mkdir build && cd build
+
 cmake ..
 make
+
 ./app
 ```
 
-## Uso de la App
+---
 
-1. Cargar la **Imagen A** (obligatoria).
-2. Cargar la **Imagen B** (requerida para operaciones binarias como suma o AND).
-3. Seleccionar la operación en el menú desplegable.
-4. Presionar "Calculate & Show" para ver el resultado.
+# Uso
+
+1. Cargar la imagen principal.
+2. Cargar una segunda imagen para operaciones binarias.
+3. Seleccionar la operación.
+4. Ajustar parámetros numéricos si aplica.
+5. Ejecutar y visualizar el resultado.
+
+---
+
+Proyecto orientado al aprendizaje de la materia Análisis automático de imágenes mediante implementación manual de algoritmos.
