@@ -120,5 +120,22 @@ cv::Mat mirror_x(const cv::Mat &m, const long int y) {
 }
 
 cv::Mat mirror_y(const cv::Mat &m, const long int x) {
-    return cv::Mat();
+    if (m.empty()) return cv::Mat();
+    if (x < 0 || x >= m.cols) return cv::Mat();
+
+    cv::Mat out = cv::Mat::zeros(m.size(), m.type());
+    int channels = m.channels();
+
+    for (int i = 0; i < m.rows; i++) {
+        for (int j = 0; j < m.cols; j++) {
+            int n_j = 2 * (int)x - j;
+            if (n_j < 0 || n_j >= m.cols) continue;
+
+            for (int c = 0; c < channels; c++) {
+                out.ptr<uchar>(i)[n_j * channels + c] = m.ptr<uchar>(i)[j * channels + c];
+            }
+        }
+    }
+
+    return out;
 }
