@@ -12,12 +12,13 @@ Las operaciones se implementan manualmente mediante acceso directo a memoria y r
 
 ## Operaciones implementadas
 
-| Operación | Entrada | Resultado |
-|---|---|---|
-| Negativo | ![Input](assets/lyon.jpg) | ![Negative](assets/negative.png) |
-| Watermark | ![Input](assets/lyon.jpg) | ![Watermark](assets/watermark_demo.png) |
-| Rotación | ![Input](assets/lyon.jpg) | ![Rotation](assets/rotation_demo.png) |
-| XOR | ![Input](assets/lyon.jpg) | ![XOR](assets/xor_demo.png) |
+| Operación | Entrada 1 | Entrada 2 | Resultado |
+|---|---|---|---|
+| Negativo | ![Input](assets/lyon.jpg) |  | ![Negative](assets/negative.png) |
+| Watermark | ![Base](assets/marca-agua-base.jpeg) | ![mark](assets/marca-agua.jpeg) | ![Watermark](assets/marca-agua-result.png) |
+| Rotación | ![Input](assets/lyon.jpg) | | ![Rotation](assets/rotation-result.png) |
+| XOR | ![Input 1](assets/XOR1.jpeg) | ![Input 1](assets/XOR2.jpeg) | ![XOR](assets/XOR-result.png) |
+| Substraction | ![Minuendo](assets/minuendo.jpeg) | ![Sustraendo](assets/sustraendo.jpeg) | ![Result](assets/substraction-result.png) |
 
 ---
 
